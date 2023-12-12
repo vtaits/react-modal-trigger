@@ -6,7 +6,7 @@
   "author": "Vadim Taits <taizvadim@gmail.com>",
   "repository": "git@github.com:vtaits/react-modal-trigger.git",
   "homepage": "https://github.com/vtaits/react-modal-trigger",
-  "tags": [
+  "keywords": [
     "react",
     "modal",
     "dialog",
