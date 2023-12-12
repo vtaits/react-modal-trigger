@@ -1,6 +1,30 @@
 {
   "type": "module",
   "name": "react-modal-trigger",
+  "version": "1.0.0",
+  "description": "Easy render of buttons that open modals",
+  "author": "Vadim Taits <taizvadim@gmail.com>",
+  "repository": "git@github.com:vtaits/react-modal-trigger.git",
+  "homepage": "https://github.com/vtaits/react-modal-trigger",
+  "tags": [
+    "react",
+    "modal",
+    "dialog",
+    "trigger"
+  ],
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/index.js",
+  "module": "./dist/esm/index.js",
+  "exports": {
+    ".": {
+      "import": "./dist/esm/index.js",
+      "require": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "typings": "dist/index.d.ts",
   "packageManager": "yarn@4.0.2",
   "scripts": {
     "start": "storybook dev -p 6006",
