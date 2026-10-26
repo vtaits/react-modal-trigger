@@ -13,25 +13,28 @@
     "trigger"
   ],
   "files": [
-    "dist"
+    "dist",
+    "src",
+    "!src/stories",
+    "!src/**/*.test.js",
+    "!src/**/*.test.jsx"
   ],
-  "main": "./dist/index.js",
-  "module": "./dist/esm/index.js",
+  "main": "./src/index.js",
+  "module": "./src/index.js",
+  "typings": "dist/ts/index.d.ts",
   "exports": {
+    "./package.json": "./package.json",
     ".": {
-      "import": "./dist/esm/index.js",
-      "require": "./dist/index.js",
-      "types": "./dist/index.d.ts"
+      "types": "./dist/ts/index.d.ts",
+      "import": "./src/index.js",
+      "default": "./src/index.js"
     }
   },
-  "typings": "dist/index.d.ts",
-  "packageManager": "yarn@4.0.2",
   "scripts": {
     "start": "storybook dev -p 6006",
-    "build": "tsup src/index.ts --sourcemap --format esm,cjs --dts --legacy-output",
-    "lint": "biome check src",
-    "lint:fix": "biome check src --apply-unsafe",
-    "format": "biome format src --write",
+    "build": "tsc -p tsconfig.build.json",
+    "lint": "biome check",
+    "lint:fix": "biome check --write --unsafe",
     "test:ts": "tsc --noEmit",
     "test:unit": "vitest run --coverage.enabled --coverage.all --coverage.include=src --coverage.exclude=src/stories",
     "test:unit:watch": "vitest",
@@ -39,31 +42,23 @@
     "prepare": "yarn build"
   },
   "peerDependencies": {
-    "react": "^17.0.0 || ^18.0.0"
+    "react": "^17.0.0 || ^18.0.0 || ^19.0.0"
   },
   "devDependencies": {
-    "@biomejs/biome": "^1.4.1",
-    "@storybook/addon-essentials": "^7.6.4",
-    "@storybook/addon-interactions": "^7.6.4",
-    "@storybook/addon-links": "^7.6.4",
-    "@storybook/blocks": "^7.6.4",
-    "@storybook/builder-vite": "^7.6.4",
-    "@storybook/manager-api": "^7.6.4",
-    "@storybook/react": "^7.6.4",
-    "@storybook/react-vite": "^7.6.4",
-    "@storybook/testing-library": "^0.2.2",
-    "@types/react": "^18.2.43",
-    "@vitest/coverage-v8": "^1.0.4",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-is": "^18.2.0",
-    "react-test-engine": "^1.1.1",
-    "react-test-engine-vitest": "^1.0.1",
-    "react-test-renderer": "^18.2.0",
-    "storybook": "^7.6.4",
-    "tsup": "^8.0.1",
-    "typescript": "^5.3.3",
-    "vite": "^5.0.8",
-    "vitest": "^1.0.4"
+    "@biomejs/biome": "^2.6.3",
+    "@testing-library/jest-dom": "^7.0.1",
+    "@testing-library/react": "^16.3.3",
+    "@storybook/react-vite": "^10.6.4",
+    "@types/react": "^19.3.0",
+    "@vitejs/plugin-react": "^6.1.2",
+    "@vitest/coverage-v8": "^5.0.5",
+    "happy-dom": "^21.0.4",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "storybook": "^10.6.4",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.5",
+    "vitest": "^5.0.5",
+    "@types/bun": "latest"
   }
 }

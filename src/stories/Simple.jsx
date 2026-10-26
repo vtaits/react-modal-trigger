@@ -1,7 +1,13 @@
-import type { ReactElement } from "react";
-import { ModalTrigger, type ModalTriggerProps } from "..";
+import { ModalTrigger } from "../index.js";
 
-export function Simple(props: ModalTriggerProps): ReactElement {
+/**
+ * @import { ModalTriggerProps } from "../index.js"
+ */
+
+/**
+ * @param {ModalTriggerProps} props
+ */
+export function Simple(props) {
 	return (
 		<ModalTrigger
 			{...props}

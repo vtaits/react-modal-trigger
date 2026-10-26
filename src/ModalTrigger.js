@@ -1,11 +1,18 @@
-import { type ReactElement, useCallback, useState } from "react";
-import type { ModalTriggerProps } from "./types";
+import { Fragment, useCallback, useState } from "react";
+import { jsxs } from "react/jsx-runtime";
 
+/**
+ * @import { ModalTriggerProps } from "./types.js"
+ */
+
+/**
+ * @param {ModalTriggerProps} props
+ */
 export function ModalTrigger({
 	initiallyOpen = false,
 	renderTrigger,
 	renderModal,
-}: ModalTriggerProps): ReactElement {
+}) {
 	const [isOpen, setIsOpen] = useState(initiallyOpen);
 
 	const handleOpen = useCallback(() => {
@@ -16,17 +23,17 @@ export function ModalTrigger({
 		setIsOpen(false);
 	}, []);
 
-	return (
-		<>
-			{renderTrigger({
+	return jsxs(Fragment, {
+		children: [
+			renderTrigger({
 				isOpen,
 				handleOpen,
-			})}
+			}),
 
-			{renderModal({
+			renderModal({
 				isOpen,
 				handleClose,
-			})}
-		</>
-	);
+			}),
+		],
+	});
 }
